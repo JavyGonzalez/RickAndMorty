@@ -1,0 +1,28 @@
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 0 10px rgb(198, 205, 5), 0 0 40px rgb(215, 221, 29), 0 0 80px rgb(236, 243, 53);
+ 
+}
+
+.contIzq{
+    height: auto;
+}
+
+.contDer{
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: auto;
+}
+
+.name{
+    box-shadow: 0 0 10px rgb(198, 205, 5), 0 0 40px rgb(215, 221, 29), 0 0 80px rgb(236, 243, 53);
+}
+
+  
