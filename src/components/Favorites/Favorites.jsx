@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 
 const Favorites = (props) => {
-    const {myFavorites, onClose} = props;
+    const {myFavorites/*, onClose*/} = props;
     const dispach = useDispatch();
     const [aux, setAux] = useState(false);
 
@@ -48,8 +48,8 @@ const Favorites = (props) => {
             gender={char.gender}
             origin={char.origin?.name}
             image={char.image}
-            character={char}
-            onClose={onClose}
+            //character={char}
+            //onClose={onClose}
           />
         ))}
     </div>

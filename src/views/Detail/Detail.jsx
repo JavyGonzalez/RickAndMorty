@@ -14,8 +14,10 @@ const Detail = ()=> {
     const [character, setCharacter] = useState();
 
     useEffect(() => {
-        axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-           if (data.name) {
+        //axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => { URL ANTIGUA
+        axios(`http://localhost:3001/rickandmorty/character/${id}`)
+        .then(({ data }) => {
+            if (data.name) {
               setCharacter(data);
            } else {
               window.alert('No hay personajes con ese ID');

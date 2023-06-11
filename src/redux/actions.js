@@ -1,32 +1,52 @@
-import { type } from "@testing-library/user-event/dist/type";
+//import { type } from "@testing-library/user-event/dist/type";
+import axios from "axios";
 
 export const ADD_FAV = 'ADD_FAV';
 export const REMOVE_FAV = 'REMOVE_FAV';
 
-export const add_fav = (character)=>{
-    return {
-        type: ADD_FAV,
-        payload: character,
-    }
+export const addFav = (character) => {
+
+   const endpoint = 'http://localhost:3001/rickandmorty/fav';
+   return async (dispatch) => {
+      try {
+         const { data } = await axios.post(endpoint, character);
+         return dispatch({
+            type: 'ADD_FAV',
+            payload: data, 
+         });
+      } catch (error) {
+         console.log(error);;
+      };
+
+   };
 };
 
-export const remove_fav = (id)=>{
-    return  {
-        type: REMOVE_FAV,
-        payload: id,
-    }
-}; 
+export const removeFav = async (id) => {
+   const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
+   return async (dispatch) => {
 
-export const filterCards = (gender)=>{
-    return {
-        type: 'FILTER',
-        payload: gender
-    }
+      try {
+         const { data } = await axios.delete(endpoint);
+         return dispatch({
+            type: 'REMOVE_FAV',
+            payload: data,
+         });
+      } catch (error) {
+         console.log(error);;
+      }
+   };
+};
+
+export const filterCards = (gender) => {
+   return {
+      type: 'FILTER',
+      payload: gender
+   }
 }
 
-export const orderCards = (order)=>{
-    return {
-        type: 'ORDER',
-        payload: order
-    }
+export const orderCards = (order) => {
+   return {
+      type: 'ORDER',
+      payload: order
+   }
 }
