@@ -13,30 +13,14 @@ http.createServer((req, res)=>{
       
 }).listen(PORT, 'localhost');*/
 
-const express = require ('express');
-const server = express();
+//const express = require ('express');
+//const server = express();
 const PORT = 3001;
-const router = require('./routes/index.js');
+const server = require('./app.js');
 const {conn} = require('./DB_connection.js')
 
-server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept'
-    );
-    res.header(
-        'Access-Control-Allow-Methods',
-        'GET, POST, OPTIONS, PUT, DELETE'
-    );
-    next();
-});
 
-server.use(express.json());
-server.use('/rickandmorty', router)
-
-conn.sync({force: true})
+conn.sync({force: false})
     .then(()=>{
         server.listen(PORT, () => {
             console.log('Server raised in port: ' + PORT);
